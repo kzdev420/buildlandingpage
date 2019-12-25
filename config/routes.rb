@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "pagebuilder#index"
-  get 'pagebuilder', to: 'pagebuilder#index'
+  post "createtemplate", to: "pagebuilder#createtemplate"
+  get "loadtemplate", to: "pagebuilder#loadtemplate"
+  resources :pagebuilder
+  
 end

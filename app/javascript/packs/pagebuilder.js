@@ -41,6 +41,14 @@ var editor = grapesjs.init({
     styleManager: {
         clearProperties: 1
     },
+    storageManager: {
+        autosave: false,
+        setStepsBeforeSave: 1,
+        type: 'remote',
+        urlStore: '/createtemplate',
+        urlLoad: '/loadtemplate',
+        contentTypeJson: true,
+    },
     plugins: [
         gjspresetwebpage,
         grapesjsloryslider,
@@ -615,17 +623,35 @@ cmdm.add('open-info', function () {
                 .replace(mdlClass, '');
         })
 });
-pn.addButton('options', {
-    id: 'open-info',
-    className: 'fa fa-question-circle',
-    command: function () {
-        editor.runCommand('open-info')
-    },
-    attributes: {
-        'title': 'About',
-        'data-tooltip-pos': 'bottom'
+editor.Commands.add('save-db', {
+    run: function(editor, sender) {
+        
+      sender && sender.set('active', 0); // turn off the button
+      editor.store();
+      alert("Succesfully Saved");
     }
 });
+
+pn.addButton('options', 
+    {
+        id: 'open-info',
+        className: 'fa fa-question-circle',
+        command: function () {
+            editor.runCommand('open-info')
+        },
+        attributes: {
+            'title': 'About',
+            'data-tooltip-pos': 'bottom'
+        }
+    }
+);
+
+editor.Panels.addButton('options', [{
+    id: 'save-db',
+    className: 'fa fa-floppy-o',
+    command: 'save-db',
+    attributes: {title: 'Save DB'}
+}]);
 
 // Simple warn notifier
 var origWarn = console.warn;
@@ -641,6 +667,7 @@ console.warn = function (msg) {
     }
     origWarn(msg);
 };
+
 
 // Add and beautify tooltips
 [
