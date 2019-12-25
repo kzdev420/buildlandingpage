@@ -1,0 +1,2 @@
+module PagebuilderHelper
+end
