@@ -10,6 +10,9 @@ import grapesjstuiimageeditor from 'grapesjs-tui-image-editor';
 import grapesjstyped from 'grapesjs-typed';
 import toastr from 'toastr';
 
+import './stylesheet/custom.css'
+
+
 var lp = './img/';
 var plp = '//placehold.it/350x250/';
 var images = [
@@ -748,71 +751,71 @@ editor.on('storage:store', function (e) {
     console.log('Stored ', e)
 });
 
-// Do stuff on load
-editor.on('load', function () {
-    var $ = grapesjs.$;
+// // Do stuff on load
+// editor.on('load', function () {
+//     var $ = grapesjs.$;
 
-    // Show logo with the version
-    var logoCont = document.querySelector('.gjs-logo-cont');
-    document
-        .querySelector('.gjs-logo-version')
-        .innerHTML = 'v' + grapesjs.version;
-    var logoPanel = document.querySelector('.gjs-pn-commands');
-    logoPanel.appendChild(logoCont);
+//     // Show logo with the version
+//     var logoCont = document.querySelector('.gjs-logo-cont');
+//     document
+//         .querySelector('.gjs-logo-version')
+//         .innerHTML = 'v' + grapesjs.version;
+//     var logoPanel = document.querySelector('.gjs-pn-commands');
+//     logoPanel.appendChild(logoCont);
 
-    // Load and show settings and style manager
-    var openTmBtn = pn.getButton('views', 'open-tm');
-    openTmBtn && openTmBtn.set('active', 1);
-    var openSm = pn.getButton('views', 'open-sm');
-    openSm && openSm.set('active', 1);
+//     // Load and show settings and style manager
+//     var openTmBtn = pn.getButton('views', 'open-tm');
+//     openTmBtn && openTmBtn.set('active', 1);
+//     var openSm = pn.getButton('views', 'open-sm');
+//     openSm && openSm.set('active', 1);
 
-    // Add Settings Sector
-    var traitsSector = $(
-        '<div class="gjs-sm-sector no-select"><div class="gjs-sm-title"><span class="ic' +
-        'on-settings fa fa-cog"></span> Settings</div><div class="gjs-sm-properties" st' +
-        'yle="display: none;"></div></div>'
-    );
-    var traitsProps = traitsSector.find('.gjs-sm-properties');
-    traitsProps.append($('.gjs-trt-traits'));
-    $('.gjs-sm-sectors').before(traitsSector);
-    traitsSector
-        .find('.gjs-sm-title')
-        .on('click', function () {
-            var traitStyle = traitsProps
-                .get(0)
-                .style;
-            var hidden = traitStyle.display == 'none';
-            if (hidden) {
-                traitStyle.display = 'block';
-            } else {
-                traitStyle.display = 'none';
-            }
-        });
+//     // Add Settings Sector
+//     var traitsSector = $(
+//         '<div class="gjs-sm-sector no-select"><div class="gjs-sm-title"><span class="ic' +
+//         'on-settings fa fa-cog"></span> Settings</div><div class="gjs-sm-properties" st' +
+//         'yle="display: none;"></div></div>'
+//     );
+//     var traitsProps = traitsSector.find('.gjs-sm-properties');
+//     traitsProps.append($('.gjs-trt-traits'));
+//     $('.gjs-sm-sectors').before(traitsSector);
+//     traitsSector
+//         .find('.gjs-sm-title')
+//         .on('click', function () {
+//             var traitStyle = traitsProps
+//                 .get(0)
+//                 .style;
+//             var hidden = traitStyle.display == 'none';
+//             if (hidden) {
+//                 traitStyle.display = 'block';
+//             } else {
+//                 traitStyle.display = 'none';
+//             }
+//         });
 
-    // Open block manager
-    var openBlocksBtn = editor
-        .Panels
-        .getButton('views', 'open-blocks');
-    openBlocksBtn && openBlocksBtn.set('active', 1);
+//     // Open block manager
+//     var openBlocksBtn = editor
+//         .Panels
+//         .getButton('views', 'open-blocks');
+//     openBlocksBtn && openBlocksBtn.set('active', 1);
 
-    // Move Ad
-    $('#gjs').append($('.ad-cont'));
-});
+//     // Move Ad
+//     $('#gjs').append($('.ad-cont'));
+// });
 
-(function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-    },
-    i[r].l = 1 * new Date();
-    a = s.createElement(o),
-    m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m
-        .parentNode
-        .insertBefore(a, m)
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+// (function (i, s, o, g, r, a, m) {
+//     i['GoogleAnalyticsObject'] = r;
+//     i[r] = i[r] || function () {
+//         (i[r].q = i[r].q || []).push(arguments)
+//     },
+//     i[r].l = 1 * new Date();
+//     a = s.createElement(o),
+//     m = s.getElementsByTagName(o)[0];
+//     a.async = 1;
+//     a.src = g;
+//     m
+//         .parentNode
+//         .insertBefore(a, m)
+// })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', 'UA-74284223-1', 'auto');
-ga('send', 'pageview');
+// ga('create', 'UA-74284223-1', 'auto');
+// ga('send', 'pageview');
